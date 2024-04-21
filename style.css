@@ -19,4 +19,21 @@ body {
 
     width: 400px;
     height: 600px;
+
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-content: center;
+}
+
+.display {
+    background-color: yellow;
+
+    height: 60px;
+    width: 400px;
+
+    text-align: right;
 }
