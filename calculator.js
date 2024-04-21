@@ -1,6 +1,6 @@
 // Variables for operators and operands
-let operator1 = 0;
-let operand = "";
+let operand1 = 0;
+let operator = "";
 let operator2 = 0;
 
 
