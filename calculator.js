@@ -20,3 +20,30 @@ let divide = (a, b) => {
 
     return a / b;
 }
+
+// A function that takes 2 operands and 1 operator to evalute them
+let operate = (pOperator, pOperand1, pOperand2) => {
+    let result;
+
+    switch (pOperator) {
+        case "+":
+            result = add(pOperand1, pOperand2);
+            break;
+        case "-":
+            result = subtract(pOperand1, pOperand2);
+            break;
+        case "*":
+            result = multiply(pOperand1, pOperand2);
+            break;
+        case "/":
+            result = divide(pOperand1, pOperand2);
+            break;
+        default:
+            console.log("ERROR: Operator not valid.");
+            console.log("Operator: " + pOperator);
+            result = NaN;
+            break;
+    }
+
+    return result;
+}
