@@ -47,3 +47,18 @@ let operate = (pOperator, pOperand1, pOperand2) => {
 
     return result;
 }
+
+// Populating the display
+
+// Get display value
+let displayValue = "Hello Calculator!";
+
+// Get Display place
+let displayTag = document.getElementById("displayTag");
+
+
+// Function to populate the display
+
+let populateDisplay = (displayText)  => {
+    displayTag.innerText = displayValue;
+}
