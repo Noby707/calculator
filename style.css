@@ -37,3 +37,42 @@ body {
 
     text-align: right;
 }
+
+.buttons {
+    background-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    width: 100px;
+    height: 90px;
+
+    justify-content: space-between;
+
+}
+
+.keypad {
+    background-color: darkgrey;
+    display: flex;
+    width: 300px;
+    flex-wrap: wrap-reverse;
+}
+
+#Clear {
+    width: 300px;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-row {
+    width: 300px;
+    display: flex;
+}
+
+#zero-button {
+    width: 200px;
+}
