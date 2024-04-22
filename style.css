@@ -12,28 +12,32 @@ body {
     align-content: center;
 
     flex-wrap: wrap;
+
+    background-color: beige;
 }
 
 .container {
-    background-color: antiquewhite;
+    background-color: white;
 
     width: 400px;
-    height: 600px;
+    height: 550px;
 
 
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: center;
 }
 
 .display {
-    background-color: yellow;
+    background-color: rgb(66, 66, 66);
 
     height: 60px;
     width: 400px;
+
+    margin-top: 20px;
 
     text-align: right;
 }
@@ -48,7 +52,6 @@ button {
     width: 100px;
     height: 90px;
 
-    justify-content: space-between;
 
 }
 
