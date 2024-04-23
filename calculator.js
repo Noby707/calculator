@@ -36,11 +36,6 @@ let printState = (place) => {
 let operate = (pOperator, pOperand1, pOperand2) => {
     let result;
 
-    // If operator is pressed while two operand are defined call the equalOperator
-    // if (operand1 != undefined && operand2 != undefined) {
-    //     equalOperation();
-    //     return;
-    // }
 
 
     switch (pOperator) {
@@ -137,6 +132,12 @@ let equalButton = document.getElementById("equal");
 
 // A function to operate and calculate results
 let equalOperation = () => {
+    // If any of the operands or operator is undefined do nothing
+    if (operand1 == undefined || operand2 == undefined || operator === "") {
+        return;
+    }
+
+
     let result = operate(operator, operand1, operand2);
     populateDisplay(result);
 
