@@ -54,12 +54,12 @@ let operate = (pOperator, pOperand1, pOperand2) => {
 let displayValue = "Hello Calculator!";
 
 // Get Display place
-let displayTag = document.getElementById("displayTag");
+let displayElement = document.getElementById("displayElement");
 
 
 // Function to populate the display
 let populateDisplay = (displayText)  => {
-    displayTag.innerText = displayText;
+    displayElement.innerText = displayText;
 }
 
 
