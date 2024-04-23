@@ -67,10 +67,10 @@ let populateDisplay = (displayText)  => {
 let numberElements = document.getElementsByClassName("number");
 let numberElementsArray = Array.from(numberElements);
 
-// Function to populate the two operands
-let clickOperand = (event) => {
-    let number = +event.target.innerText;
-
+// A function to populate the two operands
+let clickOperand = (Event) => {
+    let number = +Event.target.innerText;
+    console.log(Event);
     if (operand1 == undefined) {
         operand1 = number;
     } else if (operator == "") {
@@ -86,3 +86,8 @@ let clickOperand = (event) => {
 numberElementsArray.forEach(element => {
     element.addEventListener('click', clickOperand);
 });
+
+
+
+// A function to populate operator
+// let clickOperator = (Event) 
