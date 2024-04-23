@@ -114,6 +114,11 @@ let operatorElementsArray = Array.from(operatorElements);
 
 // A function to populate operator
 let clickOperator = (Event) => {
+    // If first operand is not picked go skip operation
+    if (operand1 == undefined) {
+        return;
+    }
+
     // If two operands are picked and the operator is defined call the equal operator
     if (operator != undefined && operand2 != undefined) {
         equalOperation();
