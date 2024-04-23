@@ -70,7 +70,7 @@ let numberElementsArray = Array.from(numberElements);
 // A function to populate the two operands
 let clickOperand = (Event) => {
     let number = +Event.target.innerText;
-    console.log(Event);
+    
     if (operand1 == undefined) {
         operand1 = number;
     } else if (operator == "") {
@@ -88,6 +88,15 @@ numberElementsArray.forEach(element => {
 });
 
 
+// Get the operators
+let operatorElements = document.getElementsByClassName("operator");
+let operatorElementsArray = Array.from(operatorElements);
 
 // A function to populate operator
-// let clickOperator = (Event) 
+let clickOperator = (Event) => {
+    operator = Event.target.innerText;
+};
+
+operatorElementsArray.forEach(element => {
+    element.addEventListener('click', clickOperator);
+});
