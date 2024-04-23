@@ -21,9 +21,27 @@ let divide = (a, b) => {
     return a / b;
 }
 
+
+/// Debug Statments for global variables
+let printState = (place) => {
+    console.log(place);
+    console.log("operand1: " + operand1);
+    console.log("operator: " + operator);
+    console.log("operand2: " + operand2);
+    console.log("-------------------------------------");
+}
+
+
 // A function that takes 2 operands and 1 operator to evalute them
 let operate = (pOperator, pOperand1, pOperand2) => {
     let result;
+
+    // If operator is pressed while two operand are defined call the equalOperator
+    // if (operand1 != undefined && operand2 != undefined) {
+    //     equalOperation();
+    //     return;
+    // }
+
 
     switch (pOperator) {
         case "+":
@@ -73,12 +91,19 @@ let clickOperand = (Event) => {
     
     if (operand1 == undefined) {
         operand1 = number;
+        populateDisplay(operand1);
+
     } else if (operator == "") {
         operand1 = (operand1 * 10) + number;
+        populateDisplay(operand1);
+
     } else if (operand2 == undefined) {
         operand2 = number;
+        populateDisplay(operand2);
+
     } else {
         operand2 = (operand2 * 10) + number;
+        populateDisplay(operand2);
     } 
 };
 
@@ -95,9 +120,15 @@ let operatorElementsArray = Array.from(operatorElements);
 // A function to populate operator
 let clickOperator = (Event) => {
     operator = Event.target.innerText;
+    printState("ClickOperator()");
 };
 
 operatorElementsArray.forEach(element => {
+    // If second operand is defined call equal operator
+    // if (operand2 != undefined) {    
+    //     equalOperation();
+    // }
+
     element.addEventListener('click', clickOperator);
 });
 
@@ -108,13 +139,14 @@ let equalButton = document.getElementById("equal");
 // A function to operate and calculate results
 let equalOperation = () => {
     let result = operate(operator, operand1, operand2);
-    displayValue = result;
-    populateDisplay(displayValue);
+    populateDisplay(result);
 
     // Reset operation
     operand1 = result;
     operand2 = undefined;
     operator = "";
+
+    printState("EqualOperation()");
 }
 
 // Add event listener to equal button
