@@ -36,7 +36,11 @@ let printState = (place) => {
 let operate = (pOperator, pOperand1, pOperand2) => {
     let result;
 
-
+    // Handle Dividing by zero
+    if (pOperator == "/" && pOperand2 == "0") {
+        alert("-_-")
+        return;
+    }
 
     switch (pOperator) {
         case "+":
