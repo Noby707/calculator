@@ -1,7 +1,7 @@
 // Variables for operators and operands
-let operand1 = 0;
+let operand1 = undefined;
 let operator = "";
-let operator2 = 0;
+let operand2 = undefined;
 
 
 
@@ -58,7 +58,31 @@ let displayTag = document.getElementById("displayTag");
 
 
 // Function to populate the display
-
 let populateDisplay = (displayText)  => {
-    displayTag.innerText = displayValue;
+    displayTag.innerText = displayText;
 }
+
+
+// Get the num Keypads
+let numberElements = document.getElementsByClassName("number");
+let numberElementsArray = Array.from(numberElements);
+
+// Function to populate the two operands
+let clickOperand = (event) => {
+    let number = +event.target.innerText;
+
+    if (operand1 == undefined) {
+        operand1 = number;
+    } else if (operator == "") {
+        operand1 = (operand1 * 10) + number;
+    } else if (operand2 == undefined) {
+        operand2 = number;
+    } else {
+        operand2 = (operand2 * 10) + number;
+    } 
+};
+
+
+numberElementsArray.forEach(element => {
+    element.addEventListener('click', clickOperand);
+});
