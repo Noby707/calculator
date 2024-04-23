@@ -119,16 +119,15 @@ let operatorElementsArray = Array.from(operatorElements);
 
 // A function to populate operator
 let clickOperator = (Event) => {
+    // If two operands are picked and the operator is defined call the equal operator
+    if (operator != undefined && operand2 != undefined) {
+        equalOperation();
+    }
     operator = Event.target.innerText;
     printState("ClickOperator()");
 };
 
 operatorElementsArray.forEach(element => {
-    // If second operand is defined call equal operator
-    // if (operand2 != undefined) {    
-    //     equalOperation();
-    // }
-
     element.addEventListener('click', clickOperator);
 });
 
@@ -151,3 +150,22 @@ let equalOperation = () => {
 
 // Add event listener to equal button
 equalButton.addEventListener('click', equalOperation);
+
+
+// Get all clear button
+let clearButton = document.getElementById("Clear");
+
+
+
+// A function to clear and reset everything
+let clearAll = () => {
+    // Clear operands and operator
+    operand1 = undefined;
+    operand2 = undefined;
+    operator = "";
+
+    populateDisplay("0");
+}
+
+// Add event listener to clearButton
+clearButton.addEventListener('click', clearAll);
