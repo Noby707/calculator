@@ -54,12 +54,12 @@ let operate = (pOperator, pOperand1, pOperand2) => {
 let displayValue = "Hello Calculator!";
 
 // Get Display place
-let displayElement = document.getElementById("displayElement");
+let displayTag = document.getElementById("displayTag");
 
 
 // Function to populate the display
 let populateDisplay = (displayText)  => {
-    displayElement.innerText = displayText;
+    displayTag.innerText = displayText;
 }
 
 
@@ -100,3 +100,22 @@ let clickOperator = (Event) => {
 operatorElementsArray.forEach(element => {
     element.addEventListener('click', clickOperator);
 });
+
+
+// Get the equal button
+let equalButton = document.getElementById("equal");
+
+// A function to operate and calculate results
+let equalOperation = () => {
+    let result = operate(operator, operand1, operand2);
+    displayValue = result;
+    populateDisplay(displayValue);
+
+    // Reset operation
+    operand1 = result;
+    operand2 = undefined;
+    operator = "";
+}
+
+// Add event listener to equal button
+equalButton.addEventListener('click', equalOperation);
