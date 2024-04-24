@@ -4,7 +4,8 @@ let operator = "";
 let operand2 = undefined;
 
 
-
+// Boolean for checking if we use a decimal
+let decimalActivated = false;
 
 // Basic Operators
 let add = (a, b) => (a + b);
@@ -62,6 +63,9 @@ let operate = (pOperator, pOperand1, pOperand2) => {
             break;
     }
 
+    // Reset for next operand
+    decimalActivated = false;
+
     return result;
 }
 
@@ -86,22 +90,22 @@ let numberElementsArray = Array.from(numberElements);
 
 // A function to populate the two operands
 let clickOperand = (Event) => {
-    let number = +Event.target.innerText;
-    
+    let number = Event.target.innerText;
+
     if (operand1 == undefined) {
         operand1 = number;
         populateDisplay(operand1);
 
     } else if (operator == "") {
-        operand1 = (operand1 * 10) + number;
+        operand1 += number;
         populateDisplay(operand1);
 
     } else if (operand2 == undefined) {
         operand2 = number;
         populateDisplay(operand2);
 
-    } else {
-        operand2 = (operand2 * 10) + number;
+    } else  if (operand2 != undefined) {
+        operand2 += number;
         populateDisplay(operand2);
     } 
 };
@@ -146,14 +150,24 @@ let equalOperation = () => {
         return;
     }
 
+    // console.log(Number.isFinite(operand1));
+    operand1 = Number(operand1);
+    operand2 = Number(operand2);
+    // console.log(Number.isFinite(operand1));
 
     let result = operate(operator, operand1, operand2);
     populateDisplay(result);
 
     // Reset operation
-    operand1 = result;
+    operand1 = result + "";
     operand2 = undefined;
     operator = "";
+    
+    if (parseInt(operand1) || operand1 == undefined) {
+        decimalActivated = false;
+    } else {
+        decimalActivated = true;
+    }
 
     printState("EqualOperation()");
 }
@@ -174,8 +188,48 @@ let clearAll = () => {
     operand2 = undefined;
     operator = "";
 
+    // Reset decimalActivated
+    decimalActivated = false;
+
     populateDisplay("0");
 }
 
 // Add event listener to clearButton
 clearButton.addEventListener('click', clearAll);
+
+
+// Get decimal button
+let decimalButton = document.getElementById("decimal");
+
+// Add eventList
+let clickPeriod = () => {
+
+    // Handle operand1 & operand2
+    if (operand1 == undefined) {
+        operand1 = "0.";
+        populateDisplay(operand1)
+    } else if (operator == "") {
+        // Check if it is already a flaot;
+        if (operand1.includes(".")) {
+            return;
+        }
+        operand1 += ".";
+        populateDisplay(operand1);
+    } else if (operand2 == undefined) {
+        operand2 = "0.";
+        populateDisplay(operand2);
+    } else if (operand2 != undefined) {
+        // Check if it is already a flaot;
+        if (includes(".")) {
+            return;
+        }
+        operand2 += ".";
+        populateDisplay(operand2);
+    }
+
+    printState("clickPeriod()");
+}
+
+// Add eventListener to decimal
+decimalButton.addEventListener('click', clickPeriod);
+
